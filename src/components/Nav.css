@@ -1,0 +1,72 @@
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+.nav--scrolled {
+  background: rgba(92, 10, 10, 0.92);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.08);
+}
+.nav__inner {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 22px clamp(20px, 4vw, 56px);
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.nav__logo {
+  color: var(--white);
+  font-size: 1.7rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.nav__links {
+  display: flex;
+  gap: clamp(20px, 3vw, 46px);
+  margin-inline: auto;
+}
+.nav__link {
+  color: var(--white);
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding-bottom: 3px;
+  border-bottom: 1.5px solid transparent;
+  transition: border-color 0.2s ease, opacity 0.2s ease;
+  opacity: 0.9;
+}
+.nav__link:hover { opacity: 1; }
+.nav__link.is-active { border-color: currentColor; }
+.nav__cta { padding: 12px 22px; font-size: 0.72rem; flex-shrink: 0; }
+
+.nav__burger { display: none; flex-direction: column; gap: 5px; background: none; border: 0; padding: 6px; }
+.nav__burger span { width: 26px; height: 2px; background: var(--white); transition: 0.3s; }
+
+.nav__mobile { display: none; }
+
+@media (max-width: 960px) {
+  .nav__links, .nav__cta { display: none; }
+  .nav__burger { display: flex; margin-left: auto; }
+  .nav--open .nav__burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav--open .nav__burger span:nth-child(2) { opacity: 0; }
+  .nav--open .nav__burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav--open { background: var(--red); }
+  .nav__mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    padding: 20px clamp(20px,4vw,56px) 34px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+  }
+  .nav--open .nav__mobile { max-height: 60vh; }
+  .nav__mlink { color: var(--white); text-transform: uppercase; font-weight: 700; font-size: 1.4rem; letter-spacing: 0.02em; }
+  .nav__mlink.is-active { opacity: 0.6; }
+  .nav--open { background: var(--red); backdrop-filter: none; }
+}

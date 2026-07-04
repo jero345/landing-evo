@@ -1,0 +1,90 @@
+:root {
+  /* Brand palette pulled from the KNND proof */
+  --red:        #5c0a0a;   /* deep club red (footer / dark red text) */
+  --red-hero:   #a8352a;   /* warm hero red */
+  --red-bright: #7a1414;
+  --cream:      #e9e2d6;   /* soft beige section bg */
+  --cream-2:    #efe9df;
+  --ink:        #1a1512;
+  --white:      #f4efe7;
+  --muted:      #8a8175;
+
+  --font-display: 'Archivo', 'Arial Narrow', Arial, sans-serif;
+  --font-body:    'Archivo', Arial, Helvetica, sans-serif;
+
+  --maxw: 1280px;
+  --pad: clamp(20px, 5vw, 72px);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+
+/* ---------- Typography helpers ---------- */
+.display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+/* ---------- Layout ---------- */
+.container {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding-inline: var(--pad);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.82rem;
+  padding: 15px 30px;
+  border: 1.5px solid currentColor;
+  background: transparent;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+.btn--light { color: var(--white); border-color: rgba(244,239,231,0.85); }
+.btn--light:hover { background: var(--white); color: var(--red); }
+.btn--solid { color: var(--white); background: var(--red); border-color: var(--red); }
+.btn--solid:hover { background: transparent; color: var(--red); }
+.btn--dark { color: var(--red); border-color: var(--red); }
+.btn--dark:hover { background: var(--red); color: var(--white); }
+
+/* ---------- Page enter animation ---------- */
+.fade-up { animation: fadeUp 0.7s ease both; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Reveal on scroll */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+::selection { background: var(--red); color: var(--white); }
